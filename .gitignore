@@ -36,6 +36,7 @@
 modules.builtin
 Module.symvers
 *.dwo
+*.log
 
 #
 # Top-level generic files
@@ -100,3 +101,4 @@ all.config
 
 # Object directory
 out/
+chewy/
