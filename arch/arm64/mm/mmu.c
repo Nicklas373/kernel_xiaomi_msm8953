@@ -555,28 +555,17 @@ void __init fixup_executable(void)
 							SECTION_SIZE);
 
 		create_mapping(aligned_start, __phys_to_virt(aligned_start),
-<<<<<<< HEAD
-				__pa(_stext) - aligned_start,
-				PAGE_KERNEL, false);
-=======
 				__pa_symbol(_stext) - aligned_start,
-				PAGE_KERNEL);
->>>>>>> 0d4768e... BACKPORT: arm64: Use __pa_symbol for kernel symbols
+				PAGE_KERNEL, false);
 	}
 
 	if (!IS_ALIGNED((unsigned long)__init_end, SECTION_SIZE)) {
 		unsigned long aligned_end = round_up(__pa_symbol(__init_end),
 							SECTION_SIZE);
-<<<<<<< HEAD
-		create_mapping(__pa(__init_end), (unsigned long)__init_end,
-				aligned_end - __pa(__init_end),
-				PAGE_KERNEL, false);
-=======
 		create_mapping(__pa_symbol(__init_end),
 				(unsigned long)__init_end,
 				aligned_end - __pa_symbol(__init_end),
-				PAGE_KERNEL);
->>>>>>> 0d4768e... BACKPORT: arm64: Use __pa_symbol for kernel symbols
+				PAGE_KERNEL, false);
 	}
 #endif
 }
